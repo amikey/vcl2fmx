@@ -13,47 +13,44 @@ program MastApp;
 
 uses
   Vcl.Forms,
-  About in 'About.pas' {AboutBox},
-  BrCstOrd in 'BrCstOrd.pas' {BrCustOrdForm},
-  Brparts in 'Brparts.pas' {BrPartsForm},
-  DataMod in 'DataMod.pas' {MastData: TDataModule},
-  Edcust in 'Edcust.pas' {EdCustForm},
-  EDOrders in 'EDOrders.pas' {EdOrderForm},
-  Edparts in 'Edparts.pas' {EdPartsForm},
-  Main in 'Main.pas' {MainForm},
-  Pickdate in 'Pickdate.pas' {BrDateForm},
-  PickInvc in 'PickInvc.pas' {PickOrderNoDlg},
-  Pickrep in 'Pickrep.pas' {PickRpt},
-  QryCust in 'QryCust.pas' {QueryCustDlg},
-  Splash in 'Splash.pas' {SplashForm},
-  SrchDlg in 'SrchDlg.pas' {SearchDlg},
-  Vcl.Themes in 'Vcl.Themes.pas',
-  Vcl.Styles;
+  DataMod in 'DataMod\DataMod.pas' {MastData: TDataModule},
+  About in 'About\About.pas' {AboutBox},
+  BrCstOrd in 'BrCstOrd\BrCstOrd.pas' {BrCustOrdForm},
+  Brparts in 'BrParts\Brparts.pas' {BrPartsForm},
+  Edcust in 'EdCust\Edcust.pas' {EdCustForm},
+  EDOrders in 'EdOrders\EDOrders.pas' {EdOrderForm},
+  Edparts in 'EdParts\Edparts.pas' {EdPartsForm},
+  Main in 'Main\Main.pas' {MainForm},
+  Pickdate in 'PickDate\Pickdate.pas' {BrDateForm},
+  PickInvc in 'PickInvc\PickInvc.pas' {PickOrderNoDlg},
+  Pickrep in 'PickRep\Pickrep.pas' {PickRpt},
+  QryCust in 'QryCust\QryCust.pas' {QueryCustDlg},
+  Splash in 'Splash\Splash.pas' {SplashForm},
+  SrchDlg in 'SrchDlg\SrchDlg.pas' {SearchDlg};
 
 {$R *.res}
 
 begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
-  TStyleManager.TrySetStyle('Emerald Light Slate');
-  TStyleManager.SetStyle('Golden Graphite');
   SplashForm := TSplashForm.Create(Application);
   SplashForm.Show;
   SplashForm.Update;
   Application.Title := 'Marine Adventures Order Entry';
   Application.HelpFile := 'C:\views\scMastApp\mastapp.hlp';
   Application.CreateForm(TMainForm, MainForm);
-  Application.CreateForm(TBrPartsForm, BrPartsForm);
-  Application.CreateForm(TQueryCustDlg, QueryCustDlg);
-  Application.CreateForm(TEdPartsForm, EdPartsForm);
+  Application.CreateForm(TAboutBox, AboutBox);
+  Application.CreateForm(TMastData, MastData);
   Application.CreateForm(TBrCustOrdForm, BrCustOrdForm);
+  Application.CreateForm(TBrPartsForm, BrPartsForm);
   Application.CreateForm(TEdCustForm, EdCustForm);
   Application.CreateForm(TEdOrderForm, EdOrderForm);
-  Application.CreateForm(TSearchDlg, SearchDlg);
+  Application.CreateForm(TEdPartsForm, EdPartsForm);
   Application.CreateForm(TBrDateForm, BrDateForm);
-  Application.CreateForm(TAboutBox, AboutBox);
   Application.CreateForm(TPickOrderNoDlg, PickOrderNoDlg);
-  Application.CreateForm(TMastData, MastData);
+  Application.CreateForm(TPickRpt, PickRpt);
+  Application.CreateForm(TQueryCustDlg, QueryCustDlg);
+  Application.CreateForm(TSearchDlg, SearchDlg);
   SplashForm.Hide;
   SplashForm.Free;
   Application.Run;
